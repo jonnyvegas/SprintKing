@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviour
         while (spawn)
         {
             randIdx = Random.Range(0, spawnedObjects.Length - 1);
-            spawnedObject = Instantiate(spawnedObjects[randIdx], this.transform);
+            spawnedObject = Instantiate(spawnedObjects[randIdx], this.transform.position, Random.rotation, this.transform);
             //spawnedObject.AddComponent<MoveObjectBackward>();
             yield return new WaitForSeconds(2f);
         }

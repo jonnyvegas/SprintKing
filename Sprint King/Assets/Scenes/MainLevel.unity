@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
   spawnedObjects:
+  - {fileID: 1359636798570130061, guid: e12fe091838b3904a820e1c18c575c6c, type: 3}
   - {fileID: 1248555385118782769, guid: 598240ba9e4f54d4db8ddec487abb7c8, type: 3}
   - {fileID: 8781626511807287713, guid: b5088f3d365a35943ad1d7a4182073c3, type: 3}
   - {fileID: 2342104755533706733, guid: 1e2e842a7522fa14e88682a3f6314c2e, type: 3}
@@ -162,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 231132788}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7, z: 50}
+  m_LocalPosition: {x: 0, y: 1, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

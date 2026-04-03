@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1626139866445851626, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
+      propertyPath: m_LinearDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626139866445851626, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
+      propertyPath: m_AngularDamping
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2127453130044260916, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -54,15 +62,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3871020277633031785, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
       propertyPath: m_Size.y
-      value: 1.5
+      value: 1.5126075
+      objectReference: {fileID: 0}
+    - target: {fileID: 3871020277633031785, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
+      propertyPath: m_Size.z
+      value: 0.93186235
       objectReference: {fileID: 0}
     - target: {fileID: 3871020277633031785, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
       propertyPath: m_Center.x
-      value: 0.1
+      value: 0.100000024
       objectReference: {fileID: 0}
     - target: {fileID: 3871020277633031785, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
       propertyPath: m_Center.y
-      value: 0.7
+      value: 0.6936963
+      objectReference: {fileID: 0}
+    - target: {fileID: 3871020277633031785, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
+      propertyPath: m_Center.z
+      value: -0.071331024
       objectReference: {fileID: 0}
     - target: {fileID: 4078567614859122423, guid: aa626c61d4238a44f83eb29aa55f1147, type: 3}
       propertyPath: m_Name
