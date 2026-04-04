@@ -6,6 +6,7 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] GameObject[] spawnedObjects;
     bool spawn = true;
     GameObject spawnedObject;
+    GameObject currentObject;
     private Coroutine spawningCoroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +26,8 @@ public class ItemSpawner : MonoBehaviour
         while (spawn)
         {
             randIdx = Random.Range(0, spawnedObjects.Length - 1);
-            spawnedObject = Instantiate(spawnedObjects[randIdx], this.transform.position, Random.rotation, this.transform);
+            spawnedObject = spawnedObjects[randIdx];
+            spawnedObject = Instantiate(spawnedObject, this.transform.position, Random.rotation, this.transform);
             //spawnedObject.AddComponent<MoveObjectBackward>();
             yield return new WaitForSeconds(2f);
         }
