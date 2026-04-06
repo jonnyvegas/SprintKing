@@ -27,7 +27,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void SpawnChunks()
     {
-        chunkPosition = transform.position;
+        chunkPosition = Vector3.zero;
         for (int i = 0; i < startingNumChunks; i++)
         {
             // or you can add 10 here, either way works.

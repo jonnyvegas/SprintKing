@@ -8,6 +8,8 @@ public class ItemSpawner : MonoBehaviour
     GameObject spawnedObject;
     GameObject currentObject;
     private Coroutine spawningCoroutine;
+    [SerializeField] float xRange = 5f;
+    Vector3 spawnPos = Vector3.zero;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,9 +27,12 @@ public class ItemSpawner : MonoBehaviour
         int randIdx = -1;
         while (spawn)
         {
-            randIdx = Random.Range(0, spawnedObjects.Length - 1);
+            randIdx = Random.Range(0, spawnedObjects.Length);
             spawnedObject = spawnedObjects[randIdx];
-            spawnedObject = Instantiate(spawnedObject, this.transform.position, Random.rotation, this.transform);
+            spawnPos = this.transform.position;
+            spawnPos.x = Random.Range(-xRange, xRange);
+            //Debug.Log(spawnPos.x);
+            spawnedObject = Instantiate(spawnedObject, spawnPos, Random.rotation, this.transform);
             //spawnedObject.AddComponent<MoveObjectBackward>();
             yield return new WaitForSeconds(2f);
         }
