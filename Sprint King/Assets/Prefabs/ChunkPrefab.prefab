@@ -137,6 +137,8 @@ GameObject:
   - component: {fileID: 6598292320514185444}
   - component: {fileID: 1169851107648916990}
   - component: {fileID: 8955392787025965915}
+  - component: {fileID: -4873211991147654124}
+  - component: {fileID: -76631175151038412}
   m_Layer: 0
   m_Name: ChunkPrefab
   m_TagString: Untagged
@@ -193,12 +195,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb25c16f33c1ad4580c8a2b87be3dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chunk
+--- !u!114 &-4873211991147654124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973217392628266954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5e56aa068cc5b46a7d7c0615e35700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupManager
+  applePrefab: {fileID: 1413310711011305552, guid: 671f3cf3d5297c4489afa256a008b7b5, type: 3}
+  coinPrefab: {fileID: 5110599854725022901, guid: 85beea47e6930664cb2257d17c198584, type: 3}
+--- !u!114 &-76631175151038412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973217392628266954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f34224268e4e9f4ab26f90384520ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FenceManager
   fencePrefab: {fileID: 1969830797727096527, guid: 62e3742f87b984e4fbb36a3934aebf92, type: 3}
-  pickupPrefab: {fileID: 1413310711011305552, guid: 671f3cf3d5297c4489afa256a008b7b5, type: 3}
-  lanes:
-  - -2.5
-  - 0
-  - 2.5
 --- !u!1001 &2515835558919892464
 PrefabInstance:
   m_ObjectHideFlags: 0
