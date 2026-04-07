@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public interface IChunk
+public interface IFenceSpawner
 {
     void SpawnFence();
 }
 
-public class Chunk : MonoBehaviour, IChunk
+public class Chunk : MonoBehaviour, IFenceSpawner
 {
     [SerializeField] GameObject fencePrefab;
     [SerializeField] float[] lanes = { -2.5f, 0, 2.5f };
