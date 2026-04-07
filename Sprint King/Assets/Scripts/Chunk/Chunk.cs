@@ -91,21 +91,23 @@ public class Chunk : MonoBehaviour, IFenceSpawner
                     // actually, spawn 5!
                     // exclusive when ints, inclusive when float.
                     numSpawns = Random.Range(1, 6);
-                    float amtToAdd = 0.5f;
+                    float amtToAdd = 2f;
                     for (int j = 0; j < numSpawns; j++)
                     { 
                         // Spawn one in the middle....
                         pickups.Add(Instantiate(pickupPrefab, spawnPos, Quaternion.identity, this.transform));
-                        // even number, add to the current lane position.
-                        if(j % 2 == 0)
-                        {
-                            spawnPos.x = lanes[i] + amtToAdd * ((j / 2) + 1);
-                        }
-                        // odd, subtract from current lane position.
-                        else
-                        {
-                            spawnPos.x = lanes[i] - amtToAdd * ((j / 2) + 1);
-                        }
+                        
+                        spawnPos.z += amtToAdd;
+                        //// even number, add to the current lane position.
+                        //if(j % 2 == 0)
+                        //{
+                        //    spawnPos.x = lanes[i] + amtToAdd * ((j / 2) + 1);
+                        //}
+                        //// odd, subtract from current lane position.
+                        //else
+                        //{
+                        //    spawnPos.x = lanes[i] - amtToAdd * ((j / 2) + 1);
+                        //}
                     }
                 }
             }
