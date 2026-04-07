@@ -71,9 +71,9 @@ public class LevelGenerator : MonoBehaviour
         chunkPosition = currentChunk.transform.position;
         chunkPosition.z = (chunks.Count - 1) * startingNumChunks;
         currentChunk.transform.position = chunkPosition;
-        if(currentChunk.TryGetComponent(out IChunk ChunkInterface))
+        if(currentChunk.TryGetComponent(out IFenceSpawner FenceInterface))
         {
-            ChunkInterface.SpawnFence();
+            FenceInterface.InitSpawns();
         }
         chunks.Add(currentChunk);
     }

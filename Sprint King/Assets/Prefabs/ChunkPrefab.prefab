@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chunk
   fencePrefab: {fileID: 1969830797727096527, guid: 62e3742f87b984e4fbb36a3934aebf92, type: 3}
+  pickupPrefab: {fileID: 1413310711011305552, guid: 671f3cf3d5297c4489afa256a008b7b5, type: 3}
   lanes:
   - -2.5
   - 0
