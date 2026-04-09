@@ -38,8 +38,6 @@ public class Chunk : MonoBehaviour, IChunk
     FenceManager fenceManagerRef;
     PickupManager pickupManagerRef;
     LaneManager chunkLaneManager;
-    //[SerializeField] float[] lanes = { -2.5f, 0, 2.5f };
-
     void Awake()
     {
         if(this.TryGetComponent(out FenceManager fenceManager))
