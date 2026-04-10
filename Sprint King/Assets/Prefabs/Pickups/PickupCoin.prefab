@@ -152,6 +152,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
   rotationSpeed: 100
+  onScoreIncreasePickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5178969760803539715, guid: eb1b2b5b4f95f6f41bbdd1b27e7995da, type: 3}
+        m_TargetAssemblyTypeName: Scoreboard, Assembly-CSharp
+        m_MethodName: UpdateScore
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &8408704350905039973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5717615415316896809, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
