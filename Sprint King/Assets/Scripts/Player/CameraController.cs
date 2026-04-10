@@ -5,11 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     CinemachineCamera cinemachineCamera;
-    [SerializeField] ParticleSystem speedUpParticle;
+    [Header("FOV")]
     [SerializeField] float minFOV = 20f;
     [SerializeField] float maxFOV = 120f;
     [SerializeField] float zoomDuration = 1f;
     [SerializeField] float zoomSpeedModifier = 5f;
+
+    [SerializeField] ParticleSystem speedUpParticle;
     private void Awake()
     {
         cinemachineCamera = GetComponent<CinemachineCamera>();

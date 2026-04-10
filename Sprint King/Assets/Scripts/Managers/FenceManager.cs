@@ -45,7 +45,7 @@ public class FenceManager : MonoBehaviour
         for (int i = 0; i < numFencesToSpawn; i++)
         {
             fenceIdx = Random.Range(0, chunkLaneManager.lanes.Length);
-            Debug.Log(fenceIdx);
+            //Debug.Log(fenceIdx);
             if (!chunkLaneManager.lanesOccupied[fenceIdx])
             {
                 chunkLaneManager.lanesOccupied[fenceIdx] = true;

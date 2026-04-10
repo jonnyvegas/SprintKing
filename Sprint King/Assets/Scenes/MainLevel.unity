@@ -241,11 +241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845372717cac37b46a014462f18bc3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  speedUpParticle: {fileID: 1014592096}
   minFOV: 35
   maxFOV: 85
   zoomDuration: 1
   zoomSpeedModifier: 5
+  speedUpParticle: {fileID: 1014592096}
 --- !u!1 &231132788
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,9 +706,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
   cameraController: {fileID: 83063295}
   chunkPrefab: {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
-  startingNumChunks: 10
   chunkParent: {fileID: 928091996}
+  startingNumChunks: 10
   killOffset: 5
+  moveSpeed: 10
+  minMoveSpeed: 2
+  maxMoveSpeed: 20
+  minGravityZ: -22.8
+  maxGravityZ: -2.8
 --- !u!4 &873471079
 Transform:
   m_ObjectHideFlags: 0

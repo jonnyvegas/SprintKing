@@ -1,20 +1,30 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] CameraController cameraController;
     [SerializeField] GameObject chunkPrefab;
-    [SerializeField] int startingNumChunks;
     [SerializeField] Transform chunkParent;
+
+    [Header("Level Settings")]
+    [Tooltip("Starting number of chunks.")]
+    [SerializeField] int startingNumChunks;
+    [SerializeField] float killOffset = 10f;
+    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float minMoveSpeed = 2f;
+    [SerializeField] float maxMoveSpeed = 20f;
+    [SerializeField] float minGravityZ = -22.81f;
+    [SerializeField] float maxGravityZ = -2.81f;
+
     List<GameObject> chunks = new List<GameObject>();
     Vector3 chunkPosition;
     GameObject currentChunk;
+
     float chunkLength = 10;
-    [SerializeField] float killOffset = 10f;
-    float moveSpeed = 10f;
-    float minMoveSpeed = 2f;
     float previousSpeed = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,6 +84,7 @@ public class LevelGenerator : MonoBehaviour
         // since we will be removing one, we can add it back to the end.
         chunkPosition = currentChunk.transform.position;
         chunkPosition.z = chunkLength * (startingNumChunks - 1);
+        Debug.Log("chunk z pos" + chunkPosition.z);
         currentChunk.transform.position = chunkPosition;
         if(currentChunk.TryGetComponent(out IChunk chunkInterface))
         {
@@ -86,20 +97,26 @@ public class LevelGenerator : MonoBehaviour
     {
         previousSpeed = moveSpeed;
         this.moveSpeed = speed;
-        Debug.Log("Previous speed " + previousSpeed + " new speed " + this.moveSpeed);
+        float deltaMoveSpeed = moveSpeed - previousSpeed;
+        deltaMoveSpeed = Mathf.Clamp(deltaMoveSpeed, minMoveSpeed, maxMoveSpeed);
+        //Debug.Log("Previous speed " + previousSpeed + " new speed " + this.moveSpeed);
         foreach(GameObject chunk in chunks)
         {
             if(chunk.TryGetComponent(out MoveObjectBackward moveObjectBackward))
             {
-                moveObjectBackward.SetSpeed(moveSpeed);
-                if (speed < minMoveSpeed)
+                if (speed != previousSpeed)
                 {
-                    moveObjectBackward.SetSpeed(minMoveSpeed);
+                    moveObjectBackward.SetSpeed(moveSpeed);
                 }
             }
         }
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Mathf.Clamp(Physics.gravity.z - (previousSpeed - speed), -18.8f, -9.8f));
-        cameraController.ChangeCameraFOV(speed - previousSpeed);
+        if (speed != previousSpeed)
+        {
+            float newGravityZ = Physics.gravity.z + deltaMoveSpeed;
+            newGravityZ = Mathf.Clamp(newGravityZ, minGravityZ, maxGravityZ);
+            Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, newGravityZ);
+            cameraController.ChangeCameraFOV(speed - previousSpeed);
+        }
     }
 
     public float GetSpeed()

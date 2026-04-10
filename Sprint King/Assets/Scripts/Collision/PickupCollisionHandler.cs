@@ -6,7 +6,7 @@ public class PickupCollisionHandler : CollisionHandler
     {
         const string playerString = "Player";
         base.OnTriggerEnter(other);
-        Debug.Log(this.gameObject.name);
+        //Debug.Log(this.gameObject.name);
         //Debug.Log("pickup has entered as a trigger.");
         if(other.CompareTag(playerString))
         {

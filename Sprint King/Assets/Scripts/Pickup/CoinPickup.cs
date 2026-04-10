@@ -5,6 +5,6 @@ public class CoinPickup : PickupParent
     public override void OnPickup()
     {
         base.OnPickup();
-        Debug.Log("Money money money dolla dolla");
+        //Debug.Log("Money money money dolla dolla");
     }
 }
