@@ -12,6 +12,9 @@ public class LevelGenerator : MonoBehaviour
     GameObject currentChunk;
     float chunkLength = 10;
     [SerializeField] float killOffset = 10f;
+    float moveSpeed = 10f;
+    float minMoveSpeed = 2f;
+    float previousSpeed = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -76,6 +79,30 @@ public class LevelGenerator : MonoBehaviour
             FenceInterface.InitSpawns();
         }
         chunks.Add(currentChunk);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        previousSpeed = moveSpeed;
+        this.moveSpeed = speed;
+        Debug.Log("Previous speed " + previousSpeed + " new speed " + this.moveSpeed);
+        foreach(GameObject chunk in chunks)
+        {
+            if(chunk.TryGetComponent(out MoveObjectBackward moveObjectBackward))
+            {
+                moveObjectBackward.SetSpeed(moveSpeed);
+                if (speed < minMoveSpeed)
+                {
+                    moveObjectBackward.SetSpeed(minMoveSpeed);
+                }
+            }
+        }
+        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - (previousSpeed - speed));
+    }
+
+    public float GetSpeed()
+    {
+        return moveSpeed;
     }
 }
 

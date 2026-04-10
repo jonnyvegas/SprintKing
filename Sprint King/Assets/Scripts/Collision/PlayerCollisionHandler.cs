@@ -6,15 +6,17 @@ public class PlayerCollisionHandler : CollisionHandler
     const string hitString = "Hit";
     [SerializeField] float hitCooldown = .5f;
     float currentTime = -1.5f;
+    [SerializeField] float deltaMoveSpeed = -2f;
+
+    [SerializeField] LevelGenerator LevelGenerator;
     public override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
-
-        
         if (Time.time - currentTime > hitCooldown)
         {
             currentTime = Time.time;
             animator.SetTrigger(hitString);
+            LevelGenerator.SetSpeed(LevelGenerator.GetSpeed() + deltaMoveSpeed);
         }
 
     }

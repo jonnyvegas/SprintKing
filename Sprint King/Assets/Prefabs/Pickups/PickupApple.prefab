@@ -145,8 +145,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5717615415316896809, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3043868199192268557}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9008549036843033849, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3642431007346447402}
   m_SourcePrefab: {fileID: 100100000, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
+--- !u!1 &1413310711011305552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9008549036843033849, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
+  m_PrefabInstance: {fileID: 7969644025489788073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3642431007346447402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413310711011305552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a0aaa2cf7b92f46bf8d6e9b1d75df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApplePickup
+  rotationSpeed: 100
 --- !u!4 &2432174599415320704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5717615415316896809, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}

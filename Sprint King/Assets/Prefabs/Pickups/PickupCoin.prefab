@@ -129,8 +129,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5717615415316896809, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8268910887384491645}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9008549036843033849, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4509173949288989610}
   m_SourcePrefab: {fileID: 100100000, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
+--- !u!1 &5110599854725022901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9008549036843033849, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}
+  m_PrefabInstance: {fileID: 4316899129897459788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4509173949288989610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110599854725022901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c912ca94c82d62f47a0c5b9470c915c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
+  rotationSpeed: 100
 --- !u!4 &8408704350905039973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5717615415316896809, guid: 236158a419a2f8a43bbaddc8a8fb6ff0, type: 3}

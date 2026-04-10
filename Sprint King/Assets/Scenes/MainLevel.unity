@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 873471078}
   m_Layer: 0
   m_Name: LevelGenerator
-  m_TagString: Untagged
+  m_TagString: LevelGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,6 +889,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisionHandler
   animator: {fileID: 1988611744}
   hitCooldown: 0.5
+  deltaMoveSpeed: -2
+  LevelGenerator: {fileID: 873471078}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6,11 +6,14 @@ public class PickupCollisionHandler : CollisionHandler
     {
         const string playerString = "Player";
         base.OnTriggerEnter(other);
-        
+        Debug.Log(this.gameObject.name);
         //Debug.Log("pickup has entered as a trigger.");
         if(other.CompareTag(playerString))
         {
-            Debug.Log(other.gameObject.name);
+            if(TryGetComponent(out PickupParent pickupParentRef))
+            {
+                pickupParentRef.OnPickup();
+            }
         }
     }
 }
