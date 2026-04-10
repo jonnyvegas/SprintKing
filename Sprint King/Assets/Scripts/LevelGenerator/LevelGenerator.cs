@@ -73,11 +73,11 @@ public class LevelGenerator : MonoBehaviour
         // Move it to the front by checking how many chunks we have and the starting number
         // since we will be removing one, we can add it back to the end.
         chunkPosition = currentChunk.transform.position;
-        chunkPosition.z = (chunks.Count - 1) * startingNumChunks;
+        chunkPosition.z = chunkLength * (startingNumChunks - 1);
         currentChunk.transform.position = chunkPosition;
-        if(currentChunk.TryGetComponent(out IFenceSpawner FenceInterface))
+        if(currentChunk.TryGetComponent(out IChunk chunkInterface))
         {
-            FenceInterface.InitSpawns();
+            chunkInterface.InitSpawns();
         }
         chunks.Add(currentChunk);
     }
@@ -98,7 +98,7 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - (previousSpeed - speed));
+        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Mathf.Clamp(Physics.gravity.z - (previousSpeed - speed), -18.8f, -9.8f));
         cameraController.ChangeCameraFOV(speed - previousSpeed);
     }
 
