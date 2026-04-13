@@ -21,7 +21,7 @@ public class PickupManager : MonoBehaviour
         
     }
 
-    public void SpawnCoins()
+    public void SpawnCoins(Scoreboard scoreboard)
     {
         float randVal = -1f;
         int numSpawns = -1;
@@ -45,7 +45,8 @@ public class PickupManager : MonoBehaviour
                     for (int j = 0; j < numSpawns; j++)
                     {
                         // Spawn one in the middle....
-                        SpawnPickup(spawnPos, coinPrefab);
+                        CoinPickup currentPickup = SpawnPickup(spawnPos, coinPrefab).GetComponent<CoinPickup>();
+                        currentPickup.Init(scoreboard);
                         spawnPos.z += amtToAdd;
                     }
                 }
@@ -53,12 +54,14 @@ public class PickupManager : MonoBehaviour
         }
     }
 
-    private void SpawnPickup(Vector3 pos, GameObject prefab)
+    private GameObject SpawnPickup(Vector3 pos, GameObject prefab)
     {
-        pickups.Add(Instantiate(prefab, pos, Quaternion.identity, this.transform));
+        GameObject currentPickup = Instantiate(prefab, pos, Quaternion.identity, this.transform);
+        pickups.Add(currentPickup);
+        return currentPickup;
     }
 
-    public void SpawnApples()
+    public void SpawnApples(LevelGenerator levelGen)
     {
         float randVal = -1f;
         Vector3 spawnPos = Vector3.zero;
@@ -74,7 +77,8 @@ public class PickupManager : MonoBehaviour
                     spawnPos.x = chunkLaneManager.lanes[i];
                     spawnPos.y = transform.position.y + pickupOffset;
                     spawnPos.z = transform.position.z;
-                    SpawnPickup(spawnPos, applePrefab);
+                    ApplePickup apple = SpawnPickup(spawnPos, applePrefab).GetComponent<ApplePickup>();
+                    apple.Init(levelGen);
                 }
             }
         }

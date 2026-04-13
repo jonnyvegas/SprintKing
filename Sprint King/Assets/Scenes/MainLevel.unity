@@ -707,6 +707,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3106261753895200540, guid: eb1b2b5b4f95f6f41bbdd1b27e7995da, type: 3}
   m_PrefabInstance: {fileID: 575481565}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &575481567 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5178969760803539715, guid: eb1b2b5b4f95f6f41bbdd1b27e7995da, type: 3}
+  m_PrefabInstance: {fileID: 575481565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46230cc5a6ad364aa3888b7f7f3e844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scoreboard
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +799,7 @@ MonoBehaviour:
   cameraController: {fileID: 83063295}
   chunkPrefab: {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
   chunkParent: {fileID: 928091996}
+  scoreboard: {fileID: 575481567}
   startingNumChunks: 10
   killOffset: 5
   moveSpeed: 10

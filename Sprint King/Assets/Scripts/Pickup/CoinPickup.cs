@@ -8,13 +8,21 @@ public class CoinPickup : PickupParent
 
     public void Start()
     {
-        scoreboard = GameObject.FindFirstObjectByType<Scoreboard>();
+        //scoreboard = GameObject.FindFirstObjectByType<Scoreboard>();
+    }
+
+    public void Init(Scoreboard scoreboard)
+    {
+        this.scoreboard = scoreboard;
     }
     public override void OnPickup()
     {
         base.OnPickup();
-        Debug.Log("Money money money dolla dolla");
-        onScoreIncreasePickup.Invoke();
-        scoreboard.UpdateScore(100);
+        //Debug.Log("Money money money dolla dolla");
+        //onScoreIncreasePickup.Invoke();
+        if (scoreboard)
+        {
+            scoreboard.UpdateScore(100);
+        }
     }
 }

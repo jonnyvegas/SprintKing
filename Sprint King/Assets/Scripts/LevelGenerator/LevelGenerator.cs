@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] CameraController cameraController;
     [SerializeField] GameObject chunkPrefab;
     [SerializeField] Transform chunkParent;
+    [SerializeField] Scoreboard scoreboard;
 
     [Header("Level Settings")]
     [Tooltip("Starting number of chunks.")]
@@ -19,18 +20,23 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float maxMoveSpeed = 20f;
     [SerializeField] float minGravityZ = -22.81f;
     [SerializeField] float maxGravityZ = -2.81f;
-
     List<GameObject> chunks = new List<GameObject>();
     Vector3 chunkPosition;
-    GameObject currentChunk;
+    Chunk currentChunk;
 
     float chunkLength = 10;
     float previousSpeed = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        InitManagers();
         SpawnChunks();
         InitializeChunkList();
+    }
+
+    void InitManagers()
+    {
+
     }
 
     private void InitializeChunkList()
@@ -46,9 +52,10 @@ public class LevelGenerator : MonoBehaviour
         {
             // or you can add 10 here, either way works.
             chunkPosition.z = CalculateSpawnPosition(i);
-            currentChunk = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent);
-            chunks.Add(currentChunk);
-            currentChunk.AddComponent<MoveObjectBackward>();
+            currentChunk = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent).GetComponent<Chunk>();
+            chunks.Add(currentChunk.gameObject);
+            currentChunk.gameObject.AddComponent<MoveObjectBackward>();
+            currentChunk.InitSpawns(this, scoreboard);// fenceManagerRef, pickupManagerRef, chunkLaneManager);
         }
     }
 
@@ -86,9 +93,9 @@ public class LevelGenerator : MonoBehaviour
         chunkPosition.z = chunkLength * (startingNumChunks - 1);
         Debug.Log("chunk z pos" + chunkPosition.z);
         currentChunk.transform.position = chunkPosition;
-        if(currentChunk.TryGetComponent(out IChunk chunkInterface))
+        if(currentChunk.TryGetComponent(out Chunk chunk))
         {
-            chunkInterface.InitSpawns();
+            chunk.InitSpawns(this, scoreboard);
         }
         chunks.Add(currentChunk);
     }

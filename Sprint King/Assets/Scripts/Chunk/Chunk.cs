@@ -38,40 +38,51 @@ public class Chunk : MonoBehaviour, IChunk
     FenceManager fenceManagerRef;
     PickupManager pickupManagerRef;
     LaneManager chunkLaneManager;
+    //LevelGenerator levelGenerator;
+    //Scoreboard scoreboard;
     void Awake()
     {
-        if(this.TryGetComponent(out FenceManager fenceManager))
+        InitManagers();
+    }
+    private void Start()
+    {
+        chunkLaneManager.lanesOccupied = new List<bool> { false, false, false };
+    }
+
+    public void InitSpawns()
+    {
+        //InitSpawns(levelGenerator, scoreboard);
+    }
+    public void InitSpawns(LevelGenerator levelGen, Scoreboard scoreboard)
+    {
+        //this.levelGenerator = levelGen;
+        //this.scoreboard = scoreboard;
+        InitManagers();
+        ClearLaneRefs();
+        fenceManagerRef.ClearFenceRefs();
+        pickupManagerRef.ClearPickups();
+        fenceManagerRef.SpawnFences();
+        pickupManagerRef.SpawnCoins(scoreboard);
+        pickupManagerRef.SpawnApples(levelGen);
+    }
+
+    public void InitManagers()
+    {
+        if (TryGetComponent(out FenceManager fenceManager))
         {
-            fenceManagerRef = fenceManager;
+            this.fenceManagerRef = fenceManager;
         }
-        if(this.TryGetComponent(out PickupManager pickupManager))
+        if (TryGetComponent(out PickupManager pickupManager))
         {
-            pickupManagerRef = pickupManager;
+            this.pickupManagerRef = pickupManager;
         }
         chunkLaneManager = new ChunkLaneManager();
         chunkLaneManager.lanes = new float[] { -2.5f, 0, 2.5f };
         chunkLaneManager.lanesOccupied = new List<bool>() { false, false, false };
         pickupManagerRef.SetChunkLaneManager(chunkLaneManager);
-        fenceManager.SetLaneManager(chunkLaneManager);
+        fenceManagerRef.SetLaneManager(chunkLaneManager);
     }
-    private void Start()
-    {
-        chunkLaneManager.lanesOccupied = new List<bool> { false, false, false };
-
-        InitSpawns();
-        
-    }
-
-    public void InitSpawns()
-    {
-        pickupManagerRef.ClearPickups();
-        ClearLaneRefs();
-        fenceManagerRef.ClearFenceRefs();
-        fenceManagerRef.SpawnFences();
-        pickupManagerRef.SpawnCoins();
-        pickupManagerRef.SpawnApples();
-        
-    }
+    
 
     void ClearLaneRefs()
     {
