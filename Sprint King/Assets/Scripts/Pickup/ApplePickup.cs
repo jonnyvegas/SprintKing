@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class ApplePickup : PickupParent
 {
-    //private string levelGeneratorTag = "LevelGenerator";
-    LevelGenerator levelGen;
+    PowerupPickupBehavior speedUpBehavior;
     float deltaSpeed = 3f;
 
-    public void Init(LevelGenerator levelGenerator)
+    public void Init(ILevelGenerator levelGenerator)
     {
-        this.levelGen = levelGenerator;
+        speedUpBehavior = new SpeedUpBehavior();
+        // Cast it once so we can set it and forget it.
+        SpeedUpBehavior sub = (SpeedUpBehavior)speedUpBehavior;
+        sub.lg = levelGenerator;
     }
     private void Start()
     {
@@ -17,9 +19,7 @@ public class ApplePickup : PickupParent
     public override void OnPickup()
     {
         base.OnPickup();
-        if(levelGen)
-        {
-            levelGen.SetSpeed(levelGen.GetSpeed() + deltaSpeed);
-        }
+
+        speedUpBehavior.Powerup();
     }
 }

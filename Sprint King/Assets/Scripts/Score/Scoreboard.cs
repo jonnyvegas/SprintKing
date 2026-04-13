@@ -1,7 +1,12 @@
 using TMPro;
 using UnityEngine;
 
-public class Scoreboard : MonoBehaviour
+public interface IScoreboard
+{
+    public void UpdateScore(int deltaScore);
+}
+
+public class Scoreboard : MonoBehaviour, IScoreboard
 {
     [SerializeField] TMP_Text text;
     int score = 0;

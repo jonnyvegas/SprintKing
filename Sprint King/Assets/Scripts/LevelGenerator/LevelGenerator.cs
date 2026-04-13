@@ -3,7 +3,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public class LevelGenerator : MonoBehaviour
+public interface ILevelGenerator
+{
+    public abstract void SetSpeed(float speed);
+    public abstract float GetSpeed();
+}
+
+public class LevelGenerator : MonoBehaviour, ILevelGenerator
 {
     [Header("References")]
     [SerializeField] CameraController cameraController;
