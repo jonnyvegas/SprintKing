@@ -11,15 +11,12 @@ public class ApplePickup : PickupParent
         // Cast it once so we can set it and forget it.
         SpeedUpBehavior sub = (SpeedUpBehavior)speedUpBehavior;
         sub.lg = levelGenerator;
+        sub.deltaSpeed = deltaSpeed;
     }
-    private void Start()
-    {
-        //levelGen = GameObject.FindGameObjectWithTag(levelGeneratorTag);
-    }
+
     public override void OnPickup()
     {
         base.OnPickup();
-
         speedUpBehavior.Powerup();
     }
 }

@@ -7,7 +7,6 @@ public class CoinPickup : PickupParent
     //public Scoreboard scoreboard;
     public UnityEvent onScoreIncreasePickup;
     [SerializeField] public int scoreAmt = 100;
-
     ScorePickupBehavior scorePickup;
     public void Init(Scoreboard scoreboard)
     {
