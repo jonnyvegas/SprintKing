@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public interface ILevelGenerator
 {
@@ -13,7 +11,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
 {
     [Header("References")]
     [SerializeField] CameraController cameraController;
-    [SerializeField] GameObject chunkPrefab;
+    [SerializeField] GameObject[] chunkPrefabs;
+    [SerializeField] GameObject checkpointPrefab;
     [SerializeField] Transform chunkParent;
     [SerializeField] Scoreboard scoreboard;
 
@@ -32,6 +31,10 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
 
     float chunkLength = 10;
     float previousSpeed = 0f;
+    int chunksSpawned = 0;
+    
+    // How often should we spawn a checkpoint?
+    [SerializeField] int checkpointInterval = 8;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,7 +52,27 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     {
         //chunks = new List<GameObject>();
     }
-    
+
+
+    private GameObject SpawnChunk()
+    {
+        GameObject chunkToSpawn;
+        chunksSpawned++;
+        if (chunksSpawned % checkpointInterval != 0)
+        {
+            chunkToSpawn = chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
+        }
+        else
+        {
+            chunkToSpawn = checkpointPrefab;
+        }    
+        currentChunk = Instantiate(chunkToSpawn, chunkPosition, Quaternion.identity, chunkParent).GetComponent<Chunk>();
+        chunks.Add(currentChunk.gameObject);
+        MoveObjectBackward mob = currentChunk.gameObject.AddComponent<MoveObjectBackward>();
+        mob.SetSpeed(moveSpeed);
+        currentChunk.InitSpawns(this, scoreboard);
+        return currentChunk.gameObject;
+    }
 
     private void SpawnChunks()
     {
@@ -58,10 +81,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         {
             // or you can add 10 here, either way works.
             chunkPosition.z = CalculateSpawnPosition(i);
-            currentChunk = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent).GetComponent<Chunk>();
-            chunks.Add(currentChunk.gameObject);
-            currentChunk.gameObject.AddComponent<MoveObjectBackward>();
-            currentChunk.InitSpawns(this, scoreboard);// fenceManagerRef, pickupManagerRef, chunkLaneManager);
+            SpawnChunk();
+            // fenceManagerRef, pickupManagerRef, chunkLaneManager);
         }
     }
 
@@ -81,7 +102,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     {
         for(int i = 0; i < chunks.Count; i++)
         {
-            if (chunks[i].transform.position.z < Camera.main.transform.position.z - killOffset)
+            if (chunks[i] && chunks[i].transform.position.z < Camera.main.transform.position.z - killOffset)
             {
                 RemoveChunkAndReAdd(i);
             }
@@ -93,17 +114,29 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         GameObject currentChunk = chunks[chunkIdx];
         // Remove chunk and place at front.
         chunks.Remove(chunks[chunkIdx]);
+
+        
         // Move it to the front by checking how many chunks we have and the starting number
         // since we will be removing one, we can add it back to the end.
         chunkPosition = currentChunk.transform.position;
         chunkPosition.z = chunkLength * (startingNumChunks - 1);
-        Debug.Log("chunk z pos" + chunkPosition.z);
-        currentChunk.transform.position = chunkPosition;
-        if(currentChunk.TryGetComponent(out Chunk chunk))
+        //Debug.Log("chunk z pos" + chunkPosition.z);
+        Destroy(currentChunk.gameObject);
+        GameObject newChunk = SpawnChunk();
+        newChunk.transform.position = chunkPosition;
+        if(newChunk.TryGetComponent(out Chunk chunk))
         {
             chunk.InitSpawns(this, scoreboard);
         }
-        chunks.Add(currentChunk);
+        chunks.Add(newChunk);
+    }
+
+    private void ChangeGravity(float deltaMoveSpeed, float speed)
+    {
+        float newGravityZ = Physics.gravity.z + deltaMoveSpeed;
+        newGravityZ = Mathf.Clamp(newGravityZ, speed, maxGravityZ);
+        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, newGravityZ);
+        cameraController.ChangeCameraFOV(speed - previousSpeed);
     }
 
     public void SetSpeed(float speed)
@@ -115,7 +148,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         //Debug.Log("Previous speed " + previousSpeed + " new speed " + this.moveSpeed);
         foreach(GameObject chunk in chunks)
         {
-            if(chunk.TryGetComponent(out MoveObjectBackward moveObjectBackward))
+            if(chunk && chunk.TryGetComponent(out MoveObjectBackward moveObjectBackward))
             {
                 if (speed != previousSpeed)
                 {
@@ -125,16 +158,19 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         }
         if (speed != previousSpeed)
         {
-            float newGravityZ = Physics.gravity.z + deltaMoveSpeed;
-            newGravityZ = Mathf.Clamp(newGravityZ, minGravityZ, maxGravityZ);
-            Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, newGravityZ);
-            cameraController.ChangeCameraFOV(speed - previousSpeed);
+            ChangeGravity(deltaMoveSpeed, speed);
+
         }
     }
 
     public float GetSpeed()
     {
         return moveSpeed;
+    }
+
+    private void SetCheckpointInterval(int newInterval)
+    {
+        this.checkpointInterval = newInterval;
     }
 }
 

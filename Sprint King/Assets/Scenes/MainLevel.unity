@@ -516,6 +516,10 @@ PrefabInstance:
       value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 3677411715892748286, guid: 9fa7a386fc7d56148a05e5752ceeb4cc, type: 3}
+      propertyPath: startTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677411715892748286, guid: 9fa7a386fc7d56148a05e5752ceeb4cc, type: 3}
       propertyPath: gameOverText
       value: 
       objectReference: {fileID: 841924529}
@@ -1047,7 +1051,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
   cameraController: {fileID: 83063295}
-  chunkPrefab: {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
+  chunkPrefabs:
+  - {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
+  - {fileID: 2066927767951415777, guid: b8985ccc1216ab64985e4137fbde9922, type: 3}
+  - {fileID: 2066927767951415777, guid: 9a714a575229c75409f97652a2ad5c7c, type: 3}
+  - {fileID: 2066927767951415777, guid: 852653ce31b8e294286743abffa7e5aa, type: 3}
+  - {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
+  - {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
+  - {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
+  checkpointPrefab: {fileID: 2066927767951415777, guid: 39f06222dea53944bb0ba36336a499bd, type: 3}
   chunkParent: {fileID: 928091996}
   scoreboard: {fileID: 575481567}
   startingNumChunks: 10
@@ -1057,6 +1069,7 @@ MonoBehaviour:
   maxMoveSpeed: 20
   minGravityZ: -22.8
   maxGravityZ: -2.8
+  checkpointInterval: 8
 --- !u!4 &873471079
 Transform:
   m_ObjectHideFlags: 0
