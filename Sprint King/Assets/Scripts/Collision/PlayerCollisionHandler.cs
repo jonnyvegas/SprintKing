@@ -22,7 +22,9 @@ public class PlayerCollisionHandler : CollisionHandler
     }
     public override void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger enter.. check if checkpoint. it's: " + other.gameObject);
-        
+        if(other.gameObject.TryGetComponent(out Checkpoint checkpoint))
+        {
+            LevelGenerator.TimeManager.addDeltaRemainingSeconds(checkpoint.TimeToAdd);
+        }
     }
 }

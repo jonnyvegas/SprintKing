@@ -15,6 +15,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     [SerializeField] GameObject checkpointPrefab;
     [SerializeField] Transform chunkParent;
     [SerializeField] Scoreboard scoreboard;
+    [SerializeField] TimeManager timeManager;
+    public TimeManager TimeManager => timeManager;
 
     [Header("Level Settings")]
     [Tooltip("Starting number of chunks.")]
@@ -134,7 +136,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     private void ChangeGravity(float deltaMoveSpeed, float speed)
     {
         float newGravityZ = Physics.gravity.z + deltaMoveSpeed;
-        newGravityZ = Mathf.Clamp(newGravityZ, speed, maxGravityZ);
+        newGravityZ = Mathf.Clamp(newGravityZ, minGravityZ, maxGravityZ);
         Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, newGravityZ);
         cameraController.ChangeCameraFOV(speed - previousSpeed);
     }
@@ -172,5 +174,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     {
         this.checkpointInterval = newInterval;
     }
+
+
 }
 

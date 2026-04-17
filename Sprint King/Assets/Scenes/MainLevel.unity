@@ -1062,6 +1062,7 @@ MonoBehaviour:
   checkpointPrefab: {fileID: 2066927767951415777, guid: 39f06222dea53944bb0ba36336a499bd, type: 3}
   chunkParent: {fileID: 928091996}
   scoreboard: {fileID: 575481567}
+  timeManager: {fileID: 362937633}
   startingNumChunks: 10
   killOffset: 5
   moveSpeed: 10

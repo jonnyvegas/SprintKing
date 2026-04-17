@@ -2,15 +2,6 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private float timeToAdd = 5f;
+    public float TimeToAdd => timeToAdd;
 }

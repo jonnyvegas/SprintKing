@@ -243,6 +243,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4736239443676691196}
+    - targetCorrespondingSourceObject: {fileID: 7973217392628266954, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6014899262827512250}
   m_SourcePrefab: {fileID: 100100000, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
 --- !u!1 &2066927767951415777 stripped
 GameObject:
@@ -268,8 +271,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8, y: 2, z: 10}
+  m_Size: {x: 8, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1.41, z: 0}
+--- !u!114 &6014899262827512250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066927767951415777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34a8c7c6bc160c458affc57fbcd4c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Checkpoint
+  timeToAdd: 5
 --- !u!4 &2997262972627187407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6598292320514185444, guid: 7369421bd4ab3684c9b58a1fa489cedb, type: 3}
