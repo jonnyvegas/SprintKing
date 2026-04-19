@@ -146,7 +146,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         previousSpeed = moveSpeed;
         this.moveSpeed = speed;
         float deltaMoveSpeed = moveSpeed - previousSpeed;
-        deltaMoveSpeed = Mathf.Clamp(deltaMoveSpeed, minMoveSpeed, maxMoveSpeed);
+        //deltaMoveSpeed = Mathf.Clamp(deltaMoveSpeed, minMoveSpeed, maxMoveSpeed);
+        moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
         //Debug.Log("Previous speed " + previousSpeed + " new speed " + this.moveSpeed);
         foreach(GameObject chunk in chunks)
         {
