@@ -34,7 +34,7 @@ public class ItemSpawner : MonoBehaviour
             //Debug.Log(spawnPos.x);
             spawnedObject = Instantiate(spawnedObject, spawnPos, Random.rotation, this.transform);
             //spawnedObject.AddComponent<MoveObjectBackward>();
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(Random.Range(2f, 4f));
         }
     }
 }
