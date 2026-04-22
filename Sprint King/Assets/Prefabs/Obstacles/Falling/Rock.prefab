@@ -5167,7 +5167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bdb5e7a150da6439508e40dbbd3e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rock
-  shakeModifier: 0.5
+  shakeModifier: 0.1
   rockParticles: {fileID: 7494468879688101840}
   rockClip: {fileID: 8300000, guid: b025affaac4800d46a478597f6621056, type: 3}
 --- !u!82 &883150203129845512
