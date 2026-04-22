@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     CinemachineCamera cinemachineCamera;
     [Header("FOV")]
     [SerializeField] float minFOV = 20f;
-    [SerializeField] float maxFOV = 120f;
+    [SerializeField] float maxFOV = 90f;
     [SerializeField] float zoomDuration = 1f;
     [SerializeField] float zoomSpeedModifier = 5f;
 

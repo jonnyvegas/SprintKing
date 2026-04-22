@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 83063294}
   - component: {fileID: 83063296}
   - component: {fileID: 83063297}
+  - component: {fileID: 83063298}
   - component: {fileID: 83063295}
   m_Layer: 0
   m_Name: CinemachineCamera
@@ -180,8 +181,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83063292}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23483299, y: 0.00000010567557, z: -0.000000025530037, w: 0.97203577}
-  m_LocalPosition: {x: -0.0000014440884, y: 3.6849205, z: -4.6453147}
+  m_LocalRotation: {x: 0.2059495, y: 0.000000044176524, z: -0.000000009297447, w: 0.97856265}
+  m_LocalPosition: {x: -0.000000889984, y: 3.417605, z: -4.7726283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -243,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845372717cac37b46a014462f18bc3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  minFOV: 35
-  maxFOV: 85
+  minFOV: 55
+  maxFOV: 95
   zoomDuration: 1
   zoomSpeedModifier: 5
   speedUpParticle: {fileID: 1014592096}
@@ -301,13 +302,37 @@ MonoBehaviour:
       Size: {x: 2, y: 2}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 3}
+  TargetOffset: {x: 0, y: 0, z: 3.5}
   Damping: {x: 0.5, y: 0.5}
   Lookahead:
     Enabled: 0
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &83063298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83063292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &231132788
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +368,7 @@ MonoBehaviour:
   - {fileID: 1248555385118782769, guid: 598240ba9e4f54d4db8ddec487abb7c8, type: 3}
   - {fileID: 8781626511807287713, guid: b5088f3d365a35943ad1d7a4182073c3, type: 3}
   - {fileID: 2342104755533706733, guid: 1e2e842a7522fa14e88682a3f6314c2e, type: 3}
+  - {fileID: 6665945786294134723, guid: 3d14b47cf905bf647bb7d26729ebbac6, type: 3}
   xRange: 3
 --- !u!4 &231132790
 Transform:
@@ -446,8 +472,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23477928, y: 0.000000074821315, z: -0.000000018071619, w: 0.97204876}
-  m_LocalPosition: {x: -0.0000014440886, y: 3.684921, z: -4.6453147}
+  m_LocalRotation: {x: 0.20594954, y: 0.000000044176527, z: -0.000000009297447, w: 0.97856265}
+  m_LocalPosition: {x: -0.0000008899841, y: 3.4176056, z: -4.772628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
