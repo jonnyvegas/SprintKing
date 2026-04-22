@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     [SerializeField] TimeManager timeManager;
     public TimeManager TimeManager => timeManager;
 
+    [SerializeField] ItemSpawner spawner;
+
     [Header("Level Settings")]
     [Tooltip("Starting number of chunks.")]
     [SerializeField] int startingNumChunks;
@@ -163,6 +165,14 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         {
             ChangeGravity(deltaMoveSpeed, speed);
 
+        }
+        if(speed > 8)
+        {
+            spawner.ShortenSpawnTimes();
+        }
+        else
+        {
+            spawner.ResetSpawnTimes();
         }
     }
 

@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
   ApplyAfter: 2
   ChannelMask: 1
-  Gain: 1
+  Gain: 0.25
   Use2DDistance: 0
   UseCameraSpace: 1
   SignalCombinationMode: 0
@@ -388,6 +388,8 @@ MonoBehaviour:
   - {fileID: 2342104755533706733, guid: 1e2e842a7522fa14e88682a3f6314c2e, type: 3}
   - {fileID: 6665945786294134723, guid: 3d14b47cf905bf647bb7d26729ebbac6, type: 3}
   xRange: 3
+  minTime: 2
+  maxTime: 5
 --- !u!4 &231132790
 Transform:
   m_ObjectHideFlags: 0
@@ -1193,6 +1195,7 @@ MonoBehaviour:
   chunkParent: {fileID: 928091996}
   scoreboard: {fileID: 575481567}
   timeManager: {fileID: 362937633}
+  spawner: {fileID: 231132789}
   startingNumChunks: 10
   killOffset: 5
   moveSpeed: 10
