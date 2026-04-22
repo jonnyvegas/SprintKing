@@ -9,6 +9,8 @@ public class ItemSpawner : MonoBehaviour
     GameObject currentObject;
     private Coroutine spawningCoroutine;
     [SerializeField] float xRange = 5f;
+    [SerializeField] float minTime = 2f;
+    [SerializeField] float maxTime = 5f;
     Vector3 spawnPos = Vector3.zero;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +36,23 @@ public class ItemSpawner : MonoBehaviour
             //Debug.Log(spawnPos.x);
             spawnedObject = Instantiate(spawnedObject, spawnPos, Random.rotation, this.transform);
             //spawnedObject.AddComponent<MoveObjectBackward>();
-            yield return new WaitForSeconds(Random.Range(2f, 4f));
+            yield return new WaitForSeconds(Random.Range(minTime, maxTime));
         }
+    }
+
+    public void ShortenSpawnTimes()
+    {
+        StopCoroutine(spawningCoroutine);
+        minTime = 0.5f;
+        maxTime = 2f;
+        spawningCoroutine = StartCoroutine(SpawnItems());
+    }
+
+    public void ResetSpawnTimes()
+    {
+        StopCoroutine(spawningCoroutine);
+        minTime = 2f;
+        maxTime = 5f;
+        spawningCoroutine = StartCoroutine(SpawnItems());
     }
 }
