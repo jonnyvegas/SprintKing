@@ -8,11 +8,18 @@ public class Rock : MonoBehaviour
     [SerializeField] ParticleSystem rockParticles;
     [SerializeField] AudioClip rockClip;
     AudioSource rockSource;
+    float deltaSinceFire = 0f;
+    float cooldown = 1f;
     private void Awake()
     {
         cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
         rockSource = GetComponent<AudioSource>();
         rockSource.clip = rockClip;
+    }
+
+    private void Update()
+    {
+        deltaSinceFire += Time.deltaTime;
     }
 
     private void FireImpulse()
@@ -38,7 +45,11 @@ public class Rock : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        FireImpulse();
-        CollisionFX(collision);
+        if (deltaSinceFire > cooldown)
+        {
+            FireImpulse();
+            CollisionFX(collision);
+            deltaSinceFire = 0f;
+        }
     }
 }
