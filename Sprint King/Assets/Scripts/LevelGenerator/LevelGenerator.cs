@@ -108,6 +108,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         {
             if (chunks[i] && chunks[i].transform.position.z < Camera.main.transform.position.z - killOffset)
             {
+                //Debug.Log(Camera.main.transform.position.z - killOffset);
                 RemoveChunkAndReAdd(i);
             }
         }
@@ -123,7 +124,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         // Move it to the front by checking how many chunks we have and the starting number
         // since we will be removing one, we can add it back to the end.
         chunkPosition = currentChunk.transform.position;
-        chunkPosition.z = chunkLength * (startingNumChunks - 1);
+        chunkPosition.z = 90f;
         //Debug.Log("chunk z pos" + chunkPosition.z);
         Destroy(currentChunk.gameObject);
         GameObject newChunk = SpawnChunk();

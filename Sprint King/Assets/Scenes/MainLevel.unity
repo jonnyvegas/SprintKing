@@ -498,7 +498,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 62283557}
-  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.01, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   timeManager: {fileID: 362937633}
   spawner: {fileID: 231132789}
   startingNumChunks: 10
-  killOffset: 5
+  killOffset: 3
   moveSpeed: 10
   minMoveSpeed: 2
   maxMoveSpeed: 20
