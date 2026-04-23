@@ -5116,7 +5116,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ImpulseDuration: 0.2
+    ImpulseDuration: 0.15
     ImpulseType: 0
     DissipationRate: 0
     RawSignal: {fileID: 0}
@@ -5147,7 +5147,7 @@ MonoBehaviour:
     DissipationMode: 2
     DissipationDistance: 100
     PropagationSpeed: 343
-  DefaultVelocity: {x: 0.2, y: -1, z: 0.2}
+  DefaultVelocity: {x: 0.2, y: -0.5, z: 0.2}
   LayerMask:
     serializedVersion: 2
     m_Bits: 1

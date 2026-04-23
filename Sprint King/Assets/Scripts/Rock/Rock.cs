@@ -47,7 +47,7 @@ public class Rock : MonoBehaviour
     {
         if (deltaSinceFire > cooldown)
         {
-            FireImpulse();
+            //FireImpulse();
             CollisionFX(collision);
             deltaSinceFire = 0f;
         }
